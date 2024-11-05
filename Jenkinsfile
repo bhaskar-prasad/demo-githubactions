@@ -1,6 +1,8 @@
 pipeline {
     agent any
-
+    environment {
+        PATH = "C:\\Users\\bhaskar.prasad\\AppData\\Local\\Programs\\Python\\Python312;C:\\Users\\bhaskar.prasad\\AppData\\Local\\Programs\\Python\\Python312\\Scripts;${env.PATH}"
+    }
     stages {
         stage('Clone Repository') {
             steps {
@@ -10,18 +12,16 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                // Use 'bat' for Windows, 'sh' for Linux/Mac
                 bat '''
                     python -m pip install --upgrade pip
-                    pip install pytest
+                    python -m pip install pytest
                 '''
             }
         }
 
         stage('Run Tests') {
             steps {
-                // Again, use 'bat' for Windows
-                bat 'pytest test_main.py'
+                bat 'python -m pytest test_main.py'
             }
         }
     }
