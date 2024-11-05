@@ -1,5 +1,5 @@
 pipeline {
-    agent { label 'new_master' }
+    agent any
 
     stages {
         stage('Clone Repository') {
