@@ -33,7 +33,7 @@ pipeline {
 
         success {
             mail to: 'bhaskars.co@gmail.com',
-                 subject: "Jenkins Build Successful: ${env.JOB_NAME",
+                 subject: "Jenkins Build Successful: ${env.JOB_NAME}",
                  body: "Good news! The Jenkins build for job ${env.JOB_NAME} completed successfully.\nCheck it at ${env.BUILD_URL}"
         }
 
