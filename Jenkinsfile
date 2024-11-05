@@ -10,7 +10,9 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                sh '''
+                // Use 'bat' for Windows, 'sh' for Linux/Mac
+                bat '''
+                    python -m pip install --upgrade pip
                     pip install pytest
                 '''
             }
@@ -18,7 +20,8 @@ pipeline {
 
         stage('Run Tests') {
             steps {
-                sh 'pytest test_main.py'
+                // Again, use 'bat' for Windows
+                bat 'pytest test_main.py'
             }
         }
     }
